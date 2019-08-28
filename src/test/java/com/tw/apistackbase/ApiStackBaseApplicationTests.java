@@ -51,15 +51,11 @@ public class ApiStackBaseApplicationTests {
 	@Test
 	public void shoud_return_201_when_pust() throws Exception {
 
-		// Given
-		MockHttpServletRequestBuilder input = MockMvcRequestBuilders
-				.post("/employees").content("{\r\n" + "    \"id\": \"2\",\r\n" + "    \"name\": \"li\",\r\n"
-						+ "    \"age\": 19,\r\n" + "    \"gender\": \"nu\"\r\n" + "}")
-				.contentType(MediaType.APPLICATION_JSON);
-		// When
-		ResultActions result = mockMvc.perform(input);
-		// Then
-		result.andDo(MockMvcResultHandlers.print()).andExpect(MockMvcResultMatchers.status().isCreated());
+		mockMvc.perform(MockMvcRequestBuilders.post("/employees")
+				.content("{\r\n" + "    \"id\": \"2\",\r\n" + "    \"name\": \"li\",\r\n" + "    \"age\": 19,\r\n"
+						+ "    \"gender\": \"nu\"\r\n" + "}")
+				.contentType(MediaType.APPLICATION_JSON)).andDo(MockMvcResultHandlers.print())
+				.andExpect(MockMvcResultMatchers.status().isCreated());
 
 	}
 }
